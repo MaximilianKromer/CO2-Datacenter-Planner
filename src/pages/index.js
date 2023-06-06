@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Container from "react-bootstrap/Container";
 
-import RzSpecForm from "../components/rz-spec-form";
+import RzSpecForm from "../components/dc-spec-form";
 
 
 const IndexPage = () => {
@@ -20,7 +20,7 @@ const IndexPage = () => {
 
   return (
     <Container className="py-3">
-      <RzSpecForm show={dcFormShow} handleClose={closeDCform} save={saveDcSpecs}/>
+      <RzSpecForm show={dcFormShow} handleClose={closeDCform}/>
     </Container>
   )
 }

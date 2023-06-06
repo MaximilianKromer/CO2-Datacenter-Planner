@@ -6,16 +6,34 @@ import Form from 'react-bootstrap/Form';
 import {Col, InputGroup, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 
-const RzSpecForm = ({show, handleClose, save}) => {
-    const [cpuValue, setCpuValue] = React.useState("");
-    const [ramValue, setRamValue] = React.useState("");
-    const [memValue, setMemValue] = React.useState("");
-    const [graphValue, setGraphValue] = React.useState("");
-    function changeValue(handler, event) {
-        const num_string = event.target.value;
+import datacenter_t from "./dc-specs";
+
+const RzSpecForm = ({show, handleClose}) => {
+    const [cpuValue, setCpuValue] = React.useState("0");
+    const [ramValue, setRamValue] = React.useState("0");
+    const [memValue, setMemValue] = React.useState("0");
+    const [graphValue, setGraphValue] = React.useState("0");
+    function changeValue(handler, event, is_float = true) {
+        let num_string = event.target.value;
         if (num_string != null) {
-            handler(num_string.match(/[0-9]*\.?[0-9]*/));
+            if(is_float){
+                num_string = num_string.match(/[0-9]*\.?[0-9]*/);
+            }
+            else{
+                num_string = num_string.match(/[1-9][0-9]*/);
+            }
+
+            if(!num_string){
+                handler("0")
+            }
+            else {
+                handler(num_string)
+            }
         }
+    }
+
+    function saveData(){
+        console.log(new datacenter_t(cpuValue, ramValue, memValue, graphValue));
     }
 
     return (
@@ -31,9 +49,9 @@ const RzSpecForm = ({show, handleClose, save}) => {
                                 <Form.Label>CPUs:</Form.Label>
                             </Col>
                             <Col xs={6}><InputGroup>
-                                <Button onClick={() => setCpuValue(cpuValue - 1)}>-</Button>
-                                <Form.Control value={cpuValue} name="cpu" onChange={(e) => changeValue(setCpuValue, e)}></Form.Control>
-                                <Button onClick={() => setCpuValue(cpuValue + 1)}>+</Button>
+                                <Button onClick={() => setCpuValue((parseInt(cpuValue) || 0) - 1)}>-</Button>
+                                <Form.Control value={cpuValue} name="cpu" onChange={(e) => changeValue(setCpuValue, e, false)}></Form.Control>
+                                <Button onClick={() => setCpuValue((parseInt(cpuValue) || 0) + 1)}>+</Button>
                             </InputGroup></Col>
                             <Col xs={3}>
                                 <Form.Label>Cores</Form.Label>
@@ -47,9 +65,9 @@ const RzSpecForm = ({show, handleClose, save}) => {
                                 <Form.Label>RAM:</Form.Label>
                             </Col>
                             <Col xs={6}><InputGroup>
-                                <Button onClick={() => setRamValue(ramValue - 1)}>-</Button>
+                                <Button onClick={() => setRamValue((parseFloat(ramValue) || 0) - 1)}>-</Button>
                                 <Form.Control value={ramValue} name="ram" onChange={(e) => changeValue(setRamValue, e)}></Form.Control>
-                                <Button onClick={() => setRamValue(ramValue + 1)}>+</Button>
+                                <Button onClick={() => setRamValue((parseFloat(ramValue) || 0) + 1)}>+</Button>
                             </InputGroup></Col>
                             <Col xs={3}>
                                 <Form.Label>GB</Form.Label>
@@ -63,9 +81,9 @@ const RzSpecForm = ({show, handleClose, save}) => {
                                 <Form.Label>Storage:</Form.Label>
                             </Col>
                             <Col xs={6}><InputGroup>
-                                <Button onClick={() => setMemValue(memValue - 1)}>-</Button>
+                                <Button onClick={() => setMemValue((parseFloat(memValue) || 0) - 1)}>-</Button>
                                 <Form.Control value={memValue} name="mem" onChange={(e) => changeValue(setMemValue, e)}></Form.Control>
-                                <Button onClick={() => setMemValue(memValue + 1)}>+</Button>
+                                <Button onClick={() => setMemValue((parseFloat(memValue) || 0) + 1)}>+</Button>
                             </InputGroup></Col>
                             <Col xs={3}>
                                 <Form.Label>TB</Form.Label>
@@ -79,17 +97,20 @@ const RzSpecForm = ({show, handleClose, save}) => {
                                 <Form.Label>Graphics Cards:</Form.Label>
                             </Col>
                             <Col xs={6}><InputGroup>
-                                <Button onClick={() => setGraphValue(graphValue - 1)}>-</Button>
-                                <Form.Control value={graphValue} name="graphics_cards" onChange={(e) => changeValue(setGraphValue, e)}></Form.Control>
-                                <Button onClick={() => setGraphValue(graphValue + 1)}>+</Button>
+                                <Button onClick={() => setGraphValue((parseInt(graphValue) || 0) - 1)}>-</Button>
+                                <Form.Control value={graphValue} name="graphics_cards" onChange={(e) => changeValue(setGraphValue, e, false)}></Form.Control>
+                                <Button onClick={() => setGraphValue((parseInt(graphValue) || 0) + 1)}>+</Button>
                             </InputGroup></Col>
                             <Col xs={3}>
-                                <Form.Label>TODO: find decripter</Form.Label>
+                                <Form.Label>Cards</Form.Label>
                             </Col>
                         </Row>
                     </Form.Group>
                 </Container>
             </Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" onClick={() => {saveData(); handleClose()}}>Save</Button>
+            </Modal.Footer>
         </Modal>
     )
 }
