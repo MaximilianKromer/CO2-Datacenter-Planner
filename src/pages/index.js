@@ -6,16 +6,6 @@ import BuildDataCentre from "./builddatacentre";
 
 const IndexPage = () => {
 
-  const [dcFormShow, showDcForm] = React.useState(true);
-
-  function saveDcSpecs(){
-    console.log(FormData);
-  }
-
-  function closeDCform(){
-    showDcForm(false);
-  }
-
 
   return (
     <Container className="py-3">
