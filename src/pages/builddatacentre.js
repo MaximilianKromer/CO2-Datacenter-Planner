@@ -7,7 +7,6 @@ import FormSelect from 'react-bootstrap/FormSelect';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import { FormControl, input } from 'react-bootstrap';
-import {dcFormShow} from '../components/rz-spec-form'
 
 const BuildDataCentre = () => {
     
@@ -40,7 +39,7 @@ const BuildDataCentre = () => {
                 <option selected> Select way to calculate energy consumption </option>
                 <option value="1">kWh/year</option>
                 {/* showing modal while picking does not work */}
-                <option value="2" onClick={dcFormShow}>Hardware components</option>
+                <option value="2">Hardware components</option>
                 <option value="3">Teraflops</option>
             </FormSelect>
             <br></br>
