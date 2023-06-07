@@ -2,15 +2,17 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Container from "react-bootstrap/Container";
 
-import BuildDataCentre from "./builddatacentre";
+import BuildDataCentre from "../components/builddatacentre";
 
 const IndexPage = () => {
 
 
   return (
-    <Container className="py-3">
-      <BuildDataCentre></BuildDataCentre>
-    </Container>
+    <Layout>
+      <Container className="py-3">
+
+      </Container>
+    </Layout>
   )
 }
 
