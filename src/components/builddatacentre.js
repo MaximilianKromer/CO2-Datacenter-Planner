@@ -7,13 +7,14 @@ import FormSelect from 'react-bootstrap/FormSelect';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import { FormControl, input } from 'react-bootstrap';
+import DcSpecForm from "./dc-spec-form";
 
 const BuildDataCentre = () => {
     
     function selectAll(){  
         var element=document.getElementsByName('country');  
         for(var i=0; i<element.length; i++){  
-            if(element[i].type=='checkbox')  
+            if(element[i].type === 'checkbox')
                 element[i].checked=true;  
         }
     }
@@ -21,32 +22,39 @@ const BuildDataCentre = () => {
     function deSelectAll(){  
         var element=document.getElementsByName('country');  
         for(var i=0; i<element.length; i++){  
-            if(element[i].type=='checkbox')  
+            if(element[i].type === 'checkbox')
             element[i].checked=false;  
               
         }  
     }
 
+    const calculationWays = [ "Hardware components", "kWh/year", "Teraflops"]
+    const [calcWay, setCalcWay] = React.useState(calculationWays[0]);
+
     return (
         <Container>
             <h1>Build your new data centre</h1>
             <br></br>
-            <Label for="namecentre">Name of your data centre</Label>
+            <Label for="namecentre">Name</Label>
             <FormControl id='namecentre' placeholder='...'></FormControl>
             <br></br>
             <Label for="energy">Energy consumption</Label>
-            <FormSelect id='energy'>
-                <option selected> Select way to calculate energy consumption </option>
-                <option value="1">kWh/year</option>
-                {/* showing modal while picking does not work */}
-                <option value="2">Hardware components</option>
-                <option value="3">Teraflops</option>
+            <FormSelect id='watt_calculation' value={calcWay} onChange={e => setCalcWay(e.target.value)}>
+                {calculationWays.map((value) => (
+                    <option value={value} key={value}>
+                        {value}
+                    </option>
+                ))}
             </FormSelect>
             <br></br>
-            Graph
+            <DcSpecForm show={true}></DcSpecForm>
+
+            <br></br>
+            <h3>Load Graph</h3>
             <br></br>
             |==========|
             <br></br>
+
             <br></br>
             <Label for='country'>Pick desired countries</Label>
             <br></br>
