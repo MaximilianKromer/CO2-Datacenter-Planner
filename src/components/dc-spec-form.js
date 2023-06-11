@@ -5,13 +5,7 @@ import Form from 'react-bootstrap/Form';
 import {Col, InputGroup, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 
-import datacenter_t from "./dc-specs";
-
-const DcSpecForm = () => {
-    const [cpuValue, setCpuValue] = React.useState("0");
-    const [ramValue, setRamValue] = React.useState("0");
-    const [memValue, setMemValue] = React.useState("0");
-    const [graphValue, setGraphValue] = React.useState("0");
+const DcSpecForm = ({cpuValue, setCpuValue, ramValue, setRamValue, memValue, setMemValue, graphValue, setGraphValue}) => {
     function changeValue(handler, event, is_float = true) {
         let num_string = event.target.value;
         if (num_string != null) {
