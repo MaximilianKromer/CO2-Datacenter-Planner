@@ -1,12 +1,13 @@
-import React from 'react'
-
 class datacenter_t {
-    constructor(cpu_count, ram_count, storage, graphics_cards) {
+    constructor(name, watt, cpu_count, ram_count, storage, graphics_cards, load_graph, locations) {
+        this.name = name;
         this.cpus = parseInt(cpu_count) || 0;
         this.ram = parseFloat(ram_count) || 0.0;
         this.storage = parseFloat(storage) || 0.0;
         this.graphics_cards = parseInt(graphics_cards) || 0;
-        this.watt = datacenter_t.calc_wattage(this.cpus, this.ram, this.storage, this.graphics_cards) 
+        this.watt = watt || datacenter_t.calc_wattage(this.cpus, this.ram, this.storage, this.graphics_cards);
+        this.load = load_graph;
+        this.locations = locations;
     }
     
     
