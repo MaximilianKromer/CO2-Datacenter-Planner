@@ -28,6 +28,33 @@ class datacenter_t {
             
         return watt;
     }
+
+    get kWhArray() {
+        return this.calc_kWhArray();
+    }
+
+    get kWh() {
+        let sum = 0;
+        for (let i = 0; i < 24; i++) {
+            sum += this.kWhArray[i];
+        }
+        return sum;
+    }
+
+    calc_kWhArray() {
+        let loadArray = [];
+        for (let i = 0; i < 12; i++) {
+            loadArray.push(this.load[i]);
+            loadArray.push((this.load[i] + this.load[i + 1]) / 2);
+        }
+
+        // TODO: kWhArray ist noch nicht richtig
+        let kWhArray = [];
+        for (let i = 0; i < 24; i++) {
+            kWhArray.push(this.watt * loadArray[i] / 1000);
+        }
+        return kWhArray;
+    }
     
 }
 

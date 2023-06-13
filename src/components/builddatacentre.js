@@ -13,7 +13,7 @@ import Form from "react-bootstrap/Form";
 import datacenter_t from "./dc-specs";
 import {countries} from "../assets/countries";
 
-const BuildDataCentre = () => {
+const BuildDataCentre = ({ onSubmit }) => {
 
     function selectAll(){
         var element=document.getElementsByName('country');
@@ -48,6 +48,7 @@ const BuildDataCentre = () => {
                                                     .map(e => e.id);
         const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, load, locations);
         console.log(JSON.stringify(currDatacenter));
+        onSubmit(currDatacenter);
     }
 
     return (
