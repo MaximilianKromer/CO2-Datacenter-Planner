@@ -7,6 +7,13 @@ const options = {
   },
 };
 
+/**
+ * Calculates the CO2 generated for each hour based on KW/H values
+ *
+ * @param {number[]} kwHArray - An array of 24 KW/H values representing the energy consumption for each hour.
+ * @param {string} zone
+ * @returns {Object|null} An object containing the CO2 generated for each hour and the total CO2 generated, or null if there was an error.
+ */
 async function calculateCO2History(kwHArray, zone) {
   try {
     const response = await fetch(
