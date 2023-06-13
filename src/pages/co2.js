@@ -11,7 +11,7 @@ function CO2HistoryComponent() {
       12, 11, 10, 9, 8, 7,
     ];
 
-    const zone = "DE"; // Replace with your desired zone
+    const zone = "DE";
 
     calculateCO2History(kwHArray, zone)
       .then((result) => {
