@@ -7,7 +7,10 @@ import icon from "../images/TU-Berlin-Logo.png";
  */
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#3282F6" }}
+    >
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
         <button
@@ -52,6 +55,7 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        backgroundColor: "#DBF1B5",
       }}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -62,7 +66,7 @@ const Footer = () => {
           <img
             src={icon}
             alt="Logo"
-            style={{ width: "60px", height: "46px" }}
+            style={{ width: "60px", height: "46px", marginRight: "10px" }}
           />
         </div>
       </div>
@@ -73,7 +77,6 @@ const Footer = () => {
 const Layout = ({ children }) => {
   return (
     <div>
-      <NavBar />
       {children}
       <Footer />
     </div>
