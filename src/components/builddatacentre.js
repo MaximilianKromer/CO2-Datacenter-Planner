@@ -94,7 +94,7 @@ const BuildDataCentre = ({ onSubmit }) => {
                 <br></br>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <Button onClick={handleSubmit} href="../result">Submit</Button>
+                    <Button onClick={handleSubmit}>Submit</Button>
                 </div>
 
             </Form>

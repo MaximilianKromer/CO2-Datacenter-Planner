@@ -3,6 +3,8 @@ import Layout from '../components/layout'
 import Container from 'react-bootstrap/Container'
 import BuildDataCentre from '../components/builddatacentre'
 import { useState } from 'react'
+import LineChart from '../components/line-chart'
+import ResultList from '../components/result-list'
 
 /*
  * Here we'll implement the planner.
@@ -10,25 +12,18 @@ import { useState } from 'react'
 
 const PlannerPage = () => {
   const [results, setResults] = useState(false)
-  const [kWh, setKWh] = useState(1)
-  const [kWhArray, setKWhArray] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+  const [datacenter, setDatacenter] = useState(null)
 
   const handleSubmit = (datacenter) => {
     setResults(true)
-    setKWh(datacenter.kWh)
-    setKWhArray(datacenter.kWhArray)
+    setDatacenter(datacenter)
   }
 
   return (
     <Layout>
       <Container className='mt-5'>
         {results ? (
-          <div>
-            <h1>Results</h1>
-            <p>Here are your results:</p>
-            <p>{kWh}</p>
-            <p>{kWhArray}</p>
-          </div>
+          <ResultList datacenter={datacenter}/>
         ) : (
           <BuildDataCentre onSubmit={
             (datacenter) => handleSubmit(datacenter)
