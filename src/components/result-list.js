@@ -16,7 +16,9 @@ const ResultList = ({ datacenter }) => {
 
 	useEffect(() => {
 		const convert = async () => {
-			setLoad(await calculateCO2History(datacenter.kWhArray, "DE"))
+			let arr, total = await calculateCO2History(datacenter.kWhArray, "DE")
+			setLoad(total.co2Array)
+			console.log("data:", total);
 		}
 		convert().catch(console.error)
 	}, [])
@@ -38,7 +40,7 @@ const ResultList = ({ datacenter }) => {
             <br></br>
             <Label>Costs: 10€/day</Label>
             <br></br>
-						<LineChart dataArray={calculateCO2History(datacenter.kWhArray, "DE")} title="CO2" label="CO2" />
+						<LineChart dataArray={load} title="CO2" label="CO2" />
           </li>
           <li class="list-group-item">
             {countries
