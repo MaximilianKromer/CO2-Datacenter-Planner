@@ -3,7 +3,6 @@ import Layout from '../components/layout'
 import Container from 'react-bootstrap/Container'
 import BuildDataCentre from '../components/builddatacentre'
 import { useState } from 'react'
-import LineChart from '../components/line-chart'
 import ResultList from '../components/result-list'
 
 /*
