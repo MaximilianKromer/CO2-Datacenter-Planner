@@ -13,7 +13,7 @@ import Form from "react-bootstrap/Form";
 import datacenter_t from "./dc-specs";
 import {countries} from "../assets/countries";
 
-const BuildDataCentre = () => {
+const BuildDataCentre = ({ onSubmit }) => {
 
     function selectAll(){
         var element=document.getElementsByName('country');
@@ -35,19 +35,20 @@ const BuildDataCentre = () => {
     const calculationWays = [ "Hardware components", "kWh/year", "Teraflops"];
     const [dcName, setDcName] = React.useState("");
     const [calcWay, setCalcWay] = React.useState(calculationWays[0]);
-    let loadArr = [0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0];
+    const [load, setLoad] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [cpuValue, setCpuValue] = React.useState("0");
     const [ramValue, setRamValue] = React.useState("0");
     const [memValue, setMemValue] = React.useState("0");
     const [graphValue, setGraphValue] = React.useState("0");
 
     function handleSubmit(){
-        const name = dcName || "asdf";
+        const name = dcName || "Datacenter";
         const locations = Array.from(document.getElementsByName('country'))
                                                     .filter(e => e.checked === true)
                                                     .map(e => e.id);
-        const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, loadArr, locations);
+        const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, load, locations);
         console.log(JSON.stringify(currDatacenter));
+        onSubmit(currDatacenter);
     }
 
     return (
@@ -56,7 +57,7 @@ const BuildDataCentre = () => {
             <br></br>
             <Form id='dataCenterForm'>
                 <Label for="namecentre">Name</Label>
-                <FormControl id='namecentre' placeholder='...' value={dcName} onChange={e => setDcName(e.target.value)}></FormControl>
+                <FormControl id='namecentre' placeholder='Datacenter' value={dcName} onChange={e => setDcName(e.target.value)}></FormControl>
                 <br></br>
                 <Label for="energy">Energy consumption</Label>
                 <FormSelect id='watt_calculation' value={calcWay} onChange={e => setCalcWay(e.target.value)}>
@@ -71,7 +72,7 @@ const BuildDataCentre = () => {
                             memValue={memValue} setMemValue={setMemValue} graphValue={graphValue} setGraphValue={setGraphValue}></DcSpecForm>
 
                 <br></br>
-                <InputChart data={loadArr} onChange={newLoad => loadArr = newLoad}/>
+                <InputChart title="Geschätzte Auslastung" data={load} onChange={setLoad}/>
                 <br></br>
 
                 <br></br>
@@ -93,7 +94,7 @@ const BuildDataCentre = () => {
                 <br></br>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <Button onClick={handleSubmit} >Submit</Button>
+                    <Button onClick={handleSubmit}>Submit</Button>
                 </div>
 
             </Form>
