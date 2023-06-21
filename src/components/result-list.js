@@ -5,25 +5,28 @@ import Form from "react-bootstrap/Form";
 import { countries } from "../assets/countries";
 import calculateCO2History from "../utils/array-to-co2";
 import ResultItem from "./result-item";
+import Label from "react-bootstrap/FormLabel"
+import LineChart from "./line-chart";
+
 
 const ResultList = ({ datacenter }) => {
 
-	const [load, setLoad] = useState(datacenter.kWhArray);
-	const [total, setTotal] = useState(0);
+  const [load, setLoad] = useState(datacenter.kWhArray);
+  const [total, setTotal] = useState(0);
 
-	useEffect(() => {
-		const convert = async () => {
-			let result = await calculateCO2History(datacenter.kWhArray, "DE")
-			setLoad(result.co2Array)
-			setTotal(result.totalCO2)
-			console.log("data:", result);
-		}
-		convert().catch(console.error)
-	}, [])
+  useEffect(() => {
+    const convert = async () => {
+      let result = await calculateCO2History(datacenter.kWhArray, "DE")
+      setLoad(result.co2Array)
+      setTotal(result.totalCO2)
+      console.log("data:", result);
+    }
+    convert().catch(console.error)
+  }, [])
 
-	// TODO: calculate CO2 for each country
-	// TODO: sort countries by CO2
-	// TODO: optional: sort countries by price
+  // TODO: calculate CO2 for each country
+  // TODO: sort countries by CO2
+  // TODO: optional: sort countries by price
 
   return (
     <Container>
@@ -47,7 +50,7 @@ const ResultList = ({ datacenter }) => {
             <br></br>
             <Label>Costs: &nbsp;</Label>
             <br></br>
-						<LineChart dataArray={calculateCO2History(datacenter.kWhArray, "DE")} title="CO2" label="CO2" />
+            <LineChart dataArray={calculateCO2History(datacenter.kWhArray, "DE")} title="CO2" label="CO2" />
           </li>
 
 
@@ -66,7 +69,7 @@ const ResultList = ({ datacenter }) => {
             <br></br>
             <Label>Costs: &nbsp;</Label>
             <br></br>
-						<LineChart dataArray={datacenter.kWhArray} title="CO2" label="CO2" />
+            <LineChart dataArray={datacenter.kWhArray} title="CO2" label="CO2" />
           </li>
         </ul>
       </Form>
