@@ -27,12 +27,47 @@ const ResultList = ({ datacenter }) => {
 
   return (
     <Container>
-      <h1>Countries where you should build new Data Centre</h1>
+      <h1>Your desired destinations to build Data Centre</h1>
       <br></br>
       <Form id="results">
         <ul class="list-group  list-group-numbered">
-					<ResultItem countryCode="DE" co2={total} co2Array={load} cost={12}/>
-					<ResultItem countryCode="FR" co2={total} co2Array={load} cost={12}/>
+          <li class="list-group-item">
+
+            <br></br>
+            <Label>Country: &nbsp; </Label>
+            {countries
+              .filter((c) => c.code === "DE")
+              .map((c) => (
+                <Label for={c.code}>{c.name}</Label>
+              ))}
+            <br></br>
+            <Label>Name: &nbsp; </Label>
+            <br></br>
+            <Label>Carbon Intensity: &nbsp;</Label>
+            <br></br>
+            <Label>Costs: &nbsp;</Label>
+            <br></br>
+						<LineChart dataArray={calculateCO2History(datacenter.kWhArray, "DE")} title="CO2" label="CO2" />
+          </li>
+
+
+          <li class="list-group-item">
+            <br></br>
+            <Label>Country: &nbsp;  </Label>
+            {countries
+              .filter((c) => c.code === "SK")
+              .map((c) => (
+                <Label for={c.code}>{c.name}</Label>
+              ))}
+            <br></br>
+            <Label>Name: &nbsp; </Label>
+            <br></br>
+            <Label>Carbon Intensity: &nbsp;</Label>
+            <br></br>
+            <Label>Costs: &nbsp;</Label>
+            <br></br>
+						<LineChart dataArray={datacenter.kWhArray} title="CO2" label="CO2" />
+          </li>
         </ul>
       </Form>
     </Container>
