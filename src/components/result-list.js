@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 import Container from "react-bootstrap/Container";
-import Label from "react-bootstrap/FormLabel";
 import Form from "react-bootstrap/Form";
 import { countries } from "../assets/countries";
-import LineChart from "./line-chart";
 import calculateCO2History from "../utils/array-to-co2";
-import BuildDataCentre from "./builddatacentre";
+import ResultItem from "./result-item";
 
 const ResultList = ({ datacenter }) => {
 
-	console.log(datacenter.kWhArray);
-	console.log(calculateCO2History(datacenter.kWhArray, "DE"));
-
-	const [load, setLoad] = useState(datacenter.kWhArray)
+	const [load, setLoad] = useState(datacenter.kWhArray);
+	const [total, setTotal] = useState(0);
 
 	useEffect(() => {
 		const convert = async () => {
-			setLoad(await calculateCO2History(datacenter.kWhArray, "DE"))
+			let result = await calculateCO2History(datacenter.kWhArray, "DE")
+			setLoad(result.co2Array)
+			setTotal(result.totalCO2)
+			console.log("data:", result);
 		}
 		convert().catch(console.error)
 	}, [])
+
+	// TODO: calculate CO2 for each country
+	// TODO: sort countries by CO2
+	// TODO: optional: sort countries by price
 
   return (
     <Container>
