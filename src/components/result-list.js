@@ -8,7 +8,6 @@ import ResultItem from "./result-item";
 import Label from "react-bootstrap/FormLabel"
 import LineChart from "./line-chart";
 
-// import LineChart from "react-bootstrap/LineChart"
 
 const ResultList = ({ datacenter }) => {
 
