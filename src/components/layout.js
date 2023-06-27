@@ -1,5 +1,6 @@
 import * as React from "react";
 import icon from "../images/TU-Berlin-Logo.png";
+import { Link } from "gatsby";
 /*
  * Page wrapper adding navbar & footer to all pages
  * TODO: Navbar, Footer
@@ -24,19 +25,19 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="/home">
+              <Link className="nav-link" aria-current="page" to="/home">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/planner">
+              <Link className="nav-link" to="/planner">
                 Planner
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/planner" >
+              <Link className="nav-link" href="/mydatacenter" >
                 My Datacenters
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
