@@ -1,8 +1,13 @@
 import * as React from "react";
-import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
+import Highcharts from 'highcharts';
+import HighchartsExporting from 'highcharts/modules/exporting';
+import HighchartsReact from 'highcharts-react-official';
+import draggable from "highcharts/modules/draggable-points";
 
-require("highcharts/modules/draggable-points")(Highcharts);
+if (typeof Highcharts === 'object') {
+  HighchartsExporting(Highcharts);
+  draggable(Highcharts);
+}
 
 /* https://api.highcharts.com/highcharts/
  * Chart for inputting data.
@@ -57,13 +62,13 @@ const InputChart = ({ title, subtitle, data, onChange }) => {
         point: {
           events: {
             drag: function () {
-              if (this.x == 0 || this.x == 12) {
+              if (this.x === 0 || this.x === 12) {
                 this.series.data[0].update({y: this.y});
                 this.series.data[12].update({y: this.y});
               }
             },
             drop: function () {
-              if (this.x == 0 || this.x == 12) {
+              if (this.x === 0 || this.x === 12) {
                 this.series.data[0].update({y: this.y});
                 this.series.data[12].update({y: this.y});
               }
