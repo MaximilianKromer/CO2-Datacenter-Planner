@@ -8,14 +8,10 @@ import { Link } from "gatsby";
  */
 const NavBar = () => {
   return (
-<<<<<<< HEAD
-    <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: "#3282F6" }}>
-=======
     <nav
       className="navbar navbar-expand-lg"
       style={{ backgroundColor: "#3282F6" }}
     >
->>>>>>> home_design
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
         <button
