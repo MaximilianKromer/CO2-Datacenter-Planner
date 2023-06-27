@@ -38,7 +38,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/mydatacenter" >
+              <Link className="nav-link" to="/mydatacenter" >
                 My Datacenters
               </Link>
             </li>
@@ -78,6 +78,7 @@ const Footer = () => {
 const Layout = ({ children }) => {
   return (
     <div>
+      <NavBar />
       {children}
       <Footer />
     </div>
