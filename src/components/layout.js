@@ -56,10 +56,10 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        backgroundColor: "#DBF1B5",
+        backgroundColor: "#3282F6",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", backgroundColor: "#DBF1B5", }}>
+      <div style={{ display: "flex", alignItems: "center", backgroundColor: "#3282F6", }}>
         <div style={{ marginRight: "10px" }}>
           <p>Skalierbare Systeme - Gruppe B</p>
         </div>
