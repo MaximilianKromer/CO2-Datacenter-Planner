@@ -8,13 +8,16 @@ const My = () => {
         <Layout>
             <Container className='mt-5'>
                 <h1>You have none!</h1>
-                <h2>comming soon...</h2>
-                <h4>maybe</h4>
+                <br></br>
+                <h2>coming soon...</h2>
+                <br></br>
+                <h4>(maybe)</h4>
+                <br></br>
             </Container>
         </Layout>
     )
 }
 
-export const Head = () => <title>Data</title>
+export const Head = () => <title>Data Centers</title>
 
 export default My
