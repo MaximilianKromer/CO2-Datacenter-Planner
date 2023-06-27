@@ -8,7 +8,7 @@ import { Link } from "gatsby";
  */
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: "#3282F6" }}>
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
         <button
@@ -55,7 +55,7 @@ const Footer = () => {
         justifyContent: "flex-end",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", backgroundColor: "#DBF1B5", }}>
         <div style={{ marginRight: "10px" }}>
           <p>Skalierbare Systeme - Gruppe B</p>
         </div>
@@ -63,7 +63,7 @@ const Footer = () => {
           <img
             src={icon}
             alt="Logo"
-            style={{ width: "60px", height: "46px" }}
+            style={{ width: "60px", height: "46px", marginRight: "10px" }}
           />
         </div>
       </div>
