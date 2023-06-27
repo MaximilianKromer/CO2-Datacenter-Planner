@@ -8,7 +8,14 @@ import { Link } from "gatsby";
  */
 const NavBar = () => {
   return (
+<<<<<<< HEAD
     <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: "#3282F6" }}>
+=======
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#3282F6" }}
+    >
+>>>>>>> home_design
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
         <button
@@ -53,6 +60,7 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        backgroundColor: "#DBF1B5",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", backgroundColor: "#DBF1B5", }}>
@@ -74,7 +82,6 @@ const Footer = () => {
 const Layout = ({ children }) => {
   return (
     <div>
-      <NavBar />
       {children}
       <Footer />
     </div>
