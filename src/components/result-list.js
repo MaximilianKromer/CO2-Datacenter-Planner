@@ -44,8 +44,6 @@ const ResultList = ({ datacenter }) => {
                 <Label for={c.code}>{c.name}</Label>
               ))}
             <br></br>
-            <Label>Name: &nbsp; </Label>
-            <br></br>
             <Label>Carbon Intensity: &nbsp;</Label>
             <br></br>
             <Label>Costs: &nbsp;</Label>
@@ -63,15 +61,19 @@ const ResultList = ({ datacenter }) => {
                 <Label for={c.code}>{c.name}</Label>
               ))}
             <br></br>
-            <Label>Name: &nbsp; </Label>
-            <br></br>
             <Label>Carbon Intensity: &nbsp;</Label>
             <br></br>
             <Label>Costs: &nbsp;</Label>
             <br></br>
             <LineChart dataArray={datacenter.kWhArray} title="CO2" label="CO2" />
           </li>
+
+          <li class="list-group-item">
+            <br></br>
+            <ResultItem countryCode={"NL"} co2={100} cost={100} co2Array={datacenter.kWhArray} ></ResultItem>
+          </li>
         </ul>
+        <br></br>
       </Form>
     </Container>
   );
