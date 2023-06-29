@@ -32,7 +32,7 @@ const BuildDataCentre = ({ onSubmit }) => {
         }
     }
 
-    const calculationWays = ["Select", "Hardware components", "kWh/year", "Teraflops"];
+    const calculationWays = ["Select", "Hardware components", "kWh", "Teraflops"];
     const [dcName, setDcName] = React.useState("");
     const [calcWay, setCalcWay] = React.useState(calculationWays[0]);
     const [load, setLoad] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -61,12 +61,14 @@ const BuildDataCentre = ({ onSubmit }) => {
                     memValue={memValue} setMemValue={setMemValue} graphValue={graphValue} setGraphValue={setGraphValue}></DcSpecForm>
 
             );
-        } else if (calcWay === "kWh/year") {
+        } else if (calcWay === "kWh") {
             return (
                 <FormControl
                     id='kWh'
                     placeholder='0'
-                    value={kwhValue}
+                    value={parseFloat(kwhValue)}
+                    type='number'
+                    min={0.0}
                     onChange={e => setKwhValue(e.target.value)}>
                 </FormControl>
             );
@@ -75,9 +77,12 @@ const BuildDataCentre = ({ onSubmit }) => {
                 <FormControl
                     id='teraflops'
                     placeholder='0'
-                    value={teraFlopsValue}
+                    value={parseFloat(teraFlopsValue)}
+                    type='number'
+                    min={0.0}
                     onChange={e => setTeraFlopsValue(e.target.value)}>
-                </FormControl>
+
+                </FormControl >
             );
         } else {
             return null;
