@@ -5,27 +5,37 @@ import Form from "react-bootstrap/Form";
 import { countries } from "../assets/countries";
 import calculateCO2History from "../utils/array-to-co2";
 import ResultItem from "./result-item";
-import Label from "react-bootstrap/FormLabel"
-import LineChart from "./line-chart";
 
 
 const ResultList = ({ datacenter }) => {
 
-  const [load, setLoad] = useState(datacenter.kWhArray);
-  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [co2Arrays, setCo2Arrays] = useState({
+    "DE": [],
+    "FR": [],
+  });
+  const [totalCO2s, setTotalCO2s] = useState({
+    "DE": 0,
+    "FR": 0,
+  });
 
   useEffect(() => {
     const convert = async () => {
-      let result = await calculateCO2History(datacenter.kWhArray, "DE")
-      setLoad(result.co2Array)
-      setTotal(result.totalCO2)
-      console.log("data:", result);
+      let arr = {}
+      let total = {}
+      for (let country of datacenter.locations) {
+        let result = await calculateCO2History(datacenter.kWhArray, country)
+        arr[country] = result.co2Array
+        total[country] = result.totalCO2
+      }
+      setCo2Arrays(arr)
+      setTotalCO2s(total)
+      setLoading(false)
+      console.log("data:", arr);
     }
     convert().catch(console.error)
   }, [])
 
-  // TODO: calculate CO2 for each country
-  // TODO: sort countries by CO2
   // TODO: optional: sort countries by price
 
   return (
@@ -34,44 +44,16 @@ const ResultList = ({ datacenter }) => {
       <br></br>
       <Form id="results">
         <ul class="list-group  list-group-numbered">
-          <li class="list-group-item">
-
-            <br></br>
-            <Label>Country: &nbsp; </Label>
-            {countries
-              .filter((c) => c.code === "DE")
-              .map((c) => (
-                <Label for={c.code}>{c.name}</Label>
-              ))}
-            <br></br>
-            <Label>Carbon Intensity: &nbsp;</Label>
-            <br></br>
-            <Label>Costs: &nbsp;</Label>
-            <br></br>
-            <LineChart dataArray={calculateCO2History(datacenter.kWhArray, "DE")} title="CO2" label="CO2" />
-          </li>
-
-
-          <li class="list-group-item">
-            <br></br>
-            <Label>Country: &nbsp;  </Label>
-            {countries
-              .filter((c) => c.code === "SK")
-              .map((c) => (
-                <Label for={c.code}>{c.name}</Label>
-              ))}
-            <br></br>
-            <Label>Carbon Intensity: &nbsp;</Label>
-            <br></br>
-            <Label>Costs: &nbsp;</Label>
-            <br></br>
-            <LineChart dataArray={datacenter.kWhArray} title="CO2" label="CO2" />
-          </li>
-
-          <li class="list-group-item">
-            <br></br>
-            <ResultItem countryCode={"NL"} co2={100} cost={100} co2Array={datacenter.kWhArray} ></ResultItem>
-          </li>
+          
+          {
+            loading ? <p>Loading...</p> :
+            Object.entries(totalCO2s)
+              .sort((a, b) => a[1] - b[1])
+              .map((element) => {
+                return <ResultItem countryCode={element[0]} co2={element[1]} cost={100} co2Array={co2Arrays[element[0]]} />
+              })
+          }
+          
         </ul>
         <br></br>
       </Form>
