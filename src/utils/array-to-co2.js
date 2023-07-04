@@ -3,7 +3,7 @@ import React from "react";
 const options = {
   method: "GET",
   headers: {
-    "X-BLOBR-KEY": "WIezX8X7VhNtDKCcXdcMRmfP838cPYoP",
+    //"X-BLOBR-KEY": "WIezX8X7VhNtDKCcXdcMRmfP838cPYoP",
   },
 };
 
@@ -17,7 +17,8 @@ const options = {
 async function calculateCO2History(kwHArray, zone) {
   try {
     const response = await fetch(
-      `https://api-access.electricitymaps.com/2w97h07rvxvuaa1g/carbon-intensity/history?zone=${zone}`,
+      //`https://api-access.electricitymaps.com/2w97h07rvxvuaa1g/carbon-intensity/history?zone=${zone}`,
+      `https://dcplanner.duckdns.org/api/getDataByZone/${zone}`,
       options
     );
     const data = await response.json();
