@@ -11,8 +11,6 @@ const My = () => {
                 <br></br>
                 <h2>coming soon...</h2>
                 <br></br>
-                <h4>(maybe)</h4>
-                <br></br>
             </Container>
         </Layout>
     )
