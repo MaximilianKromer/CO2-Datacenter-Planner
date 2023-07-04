@@ -85,15 +85,15 @@ jobs:
           path: ./public
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+        uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-      - id: 'upload-files'
-        name: 'Upload files to bucket'
-        uses: 'google-github-actions/upload-cloud-storage@v1'
-        with:
-          path: './public/'
-          destination: 'sksys-web-bucket/planner-website/'
+            
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gsutil -m rsync -rd ./public gs://sksys-web-bucket/planner-website'
 
   # Deployment job
   deploy:
