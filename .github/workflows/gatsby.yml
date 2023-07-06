@@ -83,6 +83,17 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+            
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+
+      - name: 'Use gcloud CLI'
+        run: 'gsutil -m rsync -rd ./public gs://sksys-web-bucket/planner-website'
 
   # Deployment job
   deploy:
@@ -95,3 +106,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+          

@@ -1,5 +1,6 @@
 import * as React from "react";
 import icon from "../images/TU-Berlin-Logo.png";
+import { Link } from "gatsby";
 /*
  * Page wrapper adding navbar & footer to all pages
  * TODO: Navbar, Footer
@@ -7,7 +8,10 @@ import icon from "../images/TU-Berlin-Logo.png";
  */
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className="navbar navbar-expand-lg"
+      style={{ backgroundColor: "#3282F6" }}
+    >
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
         <button
@@ -24,19 +28,19 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/home">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" to="/planner">
+              <Link className="nav-link" to="/planner">
                 Planner
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" to="/planner">
+              <Link className="nav-link" to="/mydatacenter" >
                 My Datacenters
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -52,9 +56,10 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        backgroundColor: "#3282F6",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", backgroundColor: "#3282F6", }}>
         <div style={{ marginRight: "10px" }}>
           <p>Skalierbare Systeme - Gruppe B</p>
         </div>
@@ -62,7 +67,7 @@ const Footer = () => {
           <img
             src={icon}
             alt="Logo"
-            style={{ width: "60px", height: "46px" }}
+            style={{ width: "60px", height: "46px", marginRight: "10px" }}
           />
         </div>
       </div>

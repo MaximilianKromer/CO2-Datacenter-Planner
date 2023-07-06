@@ -74,6 +74,7 @@ const Home = () => {
                 Datacenter Planner
               </Link>
             </li>
+
             <li style={{ fontSize: "24px", marginBottom: "30px" }}>
               <Link to="/docs" style={linkStyle}>
                 Documentation
