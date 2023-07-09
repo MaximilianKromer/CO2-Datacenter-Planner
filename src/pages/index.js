@@ -9,21 +9,17 @@ const pageStyles = {
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
-  maxWidth: 320,
+  maxWidth: 520,
 };
 const headingAccentStyles = {
   color: "#663399",
 };
 const paragraphStyles = {
-  marginBottom: 48,
+  marginBottom: 40,
+  color: "#663399",
+  maxWidth: 800,
 };
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-};
+
 const listStyles = {
   marginBottom: 96,
   paddingLeft: 0,
@@ -82,39 +78,37 @@ const links = [
   {
     text: "Planner Page - Starting Point",
     url: "/planner",
-    description: "There will be the configurator for a new datacenter",
     color: "#FF0000",
   },
 ];
-
-/*
- * Landingpage with usefull information, docs, etc
- */
 
 const IndexPage = () => {
   return (
     <Layout>
       <main style={pageStyles}>
         <h1 style={headingStyles}>
-          Congratulations
+          Welcome
           <br />
           <span style={headingAccentStyles}>
-            — you just made a Gatsby site! 🎉🎉🎉
+            Let's see our project!
           </span>
         </h1>
-        <p style={paragraphStyles}>
-          Edit <code style={codeStyles}>src/pages/index.js</code> to see this
-          page update in real-time. 😎
-        </p>
+        <h3 style={paragraphStyles}>
+          Thanks to us you can check what air pollution potentially creates a new data center
+          in a given region and what costs it may incur!
+        </h3>
+        <h4 style={paragraphStyles}>
+          Hope you like it!
+        </h4>
         <ul style={listStyles}>
-          <li style={docLinkStyle}>
+          {/* <li style={docLinkStyle}>
             <a
               style={linkStyle}
               href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
             >
               {docLink.text}
             </a>
-          </li>
+          </li> */}
           {links.map((link) => (
             <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
               <span>

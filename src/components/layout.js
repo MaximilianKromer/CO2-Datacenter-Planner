@@ -57,6 +57,9 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "flex-end",
         backgroundColor: "#3282F6",
+        left: 0,
+        right: 0,
+        height: 60,
       }}
     >
       <div style={{ display: "flex", alignItems: "center", backgroundColor: "#3282F6", }}>
@@ -71,7 +74,7 @@ const Footer = () => {
           />
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 
