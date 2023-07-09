@@ -13,12 +13,12 @@ const ResultItem = ({ countryCode, co2, co2Array, cost }) => {
           <Label for={c.code}>Country: {c.name}</Label>
         ))}
       <br />
-      <Label>Carbon Intensity: {co2} gCO₂eq/kWh</Label>
+      <Label>Carbon Intensity: {co2}g of CO2 per kWh</Label>
       <br />
       {countries
         .filter((c) => c.code === countryCode)
         .map((c) => (
-          <Label for={c.code}>Costs: {c.costs * cost} €/day</Label>
+          <Label for={c.code}>Costs: {Math.ceil(c.costs * cost)} €/day</Label>
         ))}
       <br />
       <LineChart dataArray={co2Array} title="CO2" label="CO2" />

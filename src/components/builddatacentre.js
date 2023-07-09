@@ -53,7 +53,7 @@ const BuildDataCentre = ({ onSubmit }) => {
                 .filter(e => e.checked === true)
                 .map(e => e.id);
             const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, load, locations);
-            console.log(JSON.stringify(currDatacenter));
+            //console.log(JSON.stringify(currDatacenter));
             onSubmit(currDatacenter);
         } else if (calcWay === "kWh") {
             const name = dcName || "Datacenter";
@@ -61,7 +61,7 @@ const BuildDataCentre = ({ onSubmit }) => {
                 .filter(e => e.checked === true)
                 .map(e => e.id);
             const currDatacenter = new datacenter_kwh(name, null, kwhValue, load, locations);
-            console.log(JSON.stringify(currDatacenter));
+            //console.log(JSON.stringify(currDatacenter));
             onSubmit(currDatacenter);
         } else if (calcWay === "Teraflops") {
             const name = dcName || "Datacenter";
@@ -69,7 +69,7 @@ const BuildDataCentre = ({ onSubmit }) => {
                 .filter(e => e.checked === true)
                 .map(e => e.id);
             const currDatacenter = new datacenter_teraflops(name, null, teraFlopsValue, load, locations);
-            console.log(JSON.stringify(currDatacenter));
+            //console.log(JSON.stringify(currDatacenter));
             onSubmit(currDatacenter);
         }
     }

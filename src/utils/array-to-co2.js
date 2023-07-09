@@ -28,7 +28,7 @@ async function calculateCO2History(kwHArray, zone) {
       const carbonIntensity = item.carbonIntensity;
       const kwH = kwHArray[index];
       const co2 = carbonIntensity * kwH;
-      return co2;
+      return Math.ceil(co2);
     });
 
     const totalCO2 = co2Array.reduce(

@@ -18,20 +18,27 @@ const ResultList = ({ datacenter }) => {
     "DE": 0,
     "FR": 0,
   });
+  const [totalKWH, setTotalKWH] = useState({
+    "DE": 0,
+    "FR": 0,
+  });
 
   useEffect(() => {
     const convert = async () => {
       let arr = {}
       let total = {}
+      let totalkwh = {}
       for (let country of datacenter.locations) {
         let result = await calculateCO2History(datacenter.kWhArray, country)
         arr[country] = result.co2Array
         total[country] = result.totalCO2
+        totalkwh[country] = datacenter.kWhArray.reduce((a, b) => a + b, 0.0)
       }
       setCo2Arrays(arr)
       setTotalCO2s(total)
+      setTotalKWH(totalkwh)
       setLoading(false)
-      console.log("data:", arr);
+      //console.log("data:", arr);
     }
     convert().catch(console.error)
   }, [])
@@ -50,7 +57,7 @@ const ResultList = ({ datacenter }) => {
             Object.entries(totalCO2s)
               .sort((a, b) => a[1] - b[1])
               .map((element) => {
-                return <ResultItem countryCode={element[0]} co2={element[1]} cost={100} co2Array={co2Arrays[element[0]]} />
+                return <ResultItem countryCode={element[0]} co2={element[1]} cost={totalKWH[element[0]]} co2Array={co2Arrays[element[0]]} />
               })
           }
           
