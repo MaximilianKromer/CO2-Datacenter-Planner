@@ -93,7 +93,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
 
       - name: 'Use gcloud CLI'
-        run: 'gsutil -m rsync -rd ./public gs://sksys-web-bucket/planner-website'
+        run: 'gsutil rsync -rd ./public gs://sksys-web-bucket/planner-website'
 
   # Deployment job
   deploy:
