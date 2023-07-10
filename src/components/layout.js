@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg"
-      style={{ backgroundColor: "#3282F6" }}
+      style={{ backgroundColor: "#3EB6E6" }}
     >
       <div className="container-fluid">
         <a className="navbar-brand">CO2-Planner</a>
@@ -38,7 +38,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/mydatacenter" >
+              <Link className="nav-link" to="/mydatacenter">
                 My Datacenters
               </Link>
             </li>
@@ -56,10 +56,16 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        backgroundColor: "#3282F6",
+        backgroundColor: "#3EB6E6",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", backgroundColor: "#3282F6", }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "#3EB6E6",
+        }}
+      >
         <div style={{ marginRight: "10px" }}>
           <p>Skalierbare Systeme - Gruppe B</p>
         </div>

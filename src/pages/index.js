@@ -49,46 +49,57 @@ const Home = () => {
             your datacenters.
           </h3>
         </motion.div>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-8">
+              <div style={sectionStyle}>
+                <h2 style={subtitleStyle}>Who are we?</h2>
+                <p style={textStyle}>
+                  We are a small team of student developers @ TU-Berlin ,
+                  Germany.
+                </p>
+                <p style={textStyle}>
+                  Our goal is to provide a tool that facilitates the planning
+                  and managing of <strong>CO2</strong> emissions of Datacenters
+                  in Europe.
+                </p>
+                <p style={textStyle}>
+                  We focus in strategic planning based on <strong>CO2</strong>{" "}
+                  emission data provided by Electricity Maps.
+                </p>
+                <p style={textStyle}>This site is a WIP.</p>
+              </div>
+            </div>
+            <div class="col-4" style={{ margin: "100px 0" }}>
+              <BestZoneCard></BestZoneCard>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div style={{ margin: "100px 0" }}>
+                <h2 style={{ textAlign: "center" }}>Our Tools:</h2>
+                <ul style={{ marginLeft: "20px" }}>
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    <Link to="/planner" style={linkStyle}>
+                      Datacenter Planner
+                    </Link>
+                  </li>
 
-        <div style={sectionStyle}>
-          <h2 style={subtitleStyle}>Who are we?</h2>
-          <p style={textStyle}>
-            We are a small team of student developers @ TU-Berlin , Germany.
-          </p>
-          <p style={textStyle}>
-            Our goal is to provide a tool that facilitates the planning and
-            managing of <strong>CO2</strong> emissions of Datacenters in Europe.
-          </p>
-          <p style={textStyle}>
-            We focus in strategic planning based on <strong>CO2</strong>{" "}
-            emission data provided by Electricity Maps.
-          </p>
-          <p style={textStyle}>This site is a WIP.</p>
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    <Link to="/docs" style={linkStyle}>
+                      Documentation
+                    </Link>
+                  </li>
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    Coming Soon...
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div style={{ margin: "100px 0" }}>
-          <h2 style={{ textAlign: "center" }}>Our Tools:</h2>
-          <ul style={{ marginLeft: "20px" }}>
-            <li style={{ fontSize: "24px", marginBottom: "30px" }}>
-              <Link to="/planner" style={linkStyle}>
-                Datacenter Planner
-              </Link>
-            </li>
-
-            <li style={{ fontSize: "24px", marginBottom: "30px" }}>
-              <Link to="/docs" style={linkStyle}>
-                Documentation
-              </Link>
-            </li>
-            <li style={{ fontSize: "24px", marginBottom: "30px" }}>
-              Coming Soon...
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <BestZoneCard></BestZoneCard>
-        </div>
+        <div></div>
       </div>
     </Layout>
   );

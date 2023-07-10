@@ -47,3 +47,34 @@
 Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
 
 [<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+
+## Home Page (home.js)
+
+The home page is the main landing page of the application. It provides an overview of the app and includes links to other pages.
+
+- The page displays a title and a description of the CO2 Planner for Datacenters.
+- It showcases the development team, their goals, and their focus on strategic planning based on CO2 emission data provided by Electricity Maps.
+- The page also includes a work-in-progress notice and a card component (`BestZoneCard`), which may provide additional information.
+
+## Build Data Centre Page (builddatacentre.js)
+
+The Build Data Centre page allows users to input information about a datacenter.
+
+- Users can enter the name of the datacenter and choose the desired countries for the datacenter's location.
+- The page includes options for specifying the energy consumption calculation method, such as hardware components, kWh, or teraflops.
+- Users can provide load values using an input chart, and the page offers the ability to select or deselect all countries.
+- Upon submission, the data is processed and passed to the `onSubmit` function.
+
+## Utility Functions
+
+### `dc-specs.js`
+
+The `datacenter_t` class represents a datacenter with various specifications. It includes methods to calculate power consumption and retrieve power consumption data for analysis.
+
+### `InputChart.js`
+
+The `InputChart` component utilizes Highcharts to create an interactive chart for inputting load values at different time intervals.
+
+### `array-to-co2.js`
+
+The `calculateCO2History` function is a utility that makes an API call to the backend to calculate the CO2 generated for each hour based on KW/H values. It retrieves CO2 data for a specified zone and performs calculations related to CO2 emissions.

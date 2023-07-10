@@ -5,7 +5,7 @@ const BestZoneCard = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch("http://localhost:3000/getBestZone/day")
+    fetch(`https://dcplanner.duckdns.org/api/getBestZone/day`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Data:", data);
@@ -20,7 +20,7 @@ const BestZoneCard = () => {
     <div className="card">
       <div className="card-header">
         <h5 className="card-title">
-          Today's Greenest Country by Carbon Intensity
+          Today's Greenest Zone by Carbon Intensity
         </h5>
       </div>
       <div className="card-body">
@@ -28,7 +28,10 @@ const BestZoneCard = () => {
           <div>
             <h6 className="card-subtitle mb-2 text-muted">{bestZone.zone}</h6>
             <img
-              src={`https://flagsapi.com/${bestZone.zone}/shiny/64.png`}
+              src={`https://flagsapi.com/${bestZone.zone.substring(
+                0,
+                2
+              )}/shiny/64.png`}
               alt={bestZone.zone}
             />
             <p>Average Carbon Intensity: {bestZone.avgCarbonIntensity}</p>
