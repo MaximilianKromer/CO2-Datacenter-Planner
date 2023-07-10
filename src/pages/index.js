@@ -1,138 +1,110 @@
-import * as React from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import Layout from "../components/layout";
+import { Link } from "gatsby";
+import BestZoneCard from "../components/beste_standort";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 520,
-};
-const headingAccentStyles = {
-  color: "#663399",
-};
-const paragraphStyles = {
-  marginBottom: 40,
-  color: "#663399",
-  maxWidth: 800,
-};
+const Home = () => {
+  const titleVariants = {
+    initial: { x: -100, opacity: 0 },
+    animate: { x: 0, opacity: 1, transition: { duration: 1.25 } },
+  };
+  const linkStyle = {
+    color: "#e74c3c",
+    textDecoration: "none",
+    transition: "color 0.3s ease-in-out",
+  };
 
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-};
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-};
+  const linkHoverStyle = {
+    color: "#c0392b",
+  };
+  const sectionStyle = {
+    margin: "100px 0",
+  };
+  const subtitleStyle = {
+    fontSize: "32px",
+    marginBottom: "20px",
+    textAlign: "center",
+  };
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-};
+  const textStyle = {
+    fontSize: "18px",
+  };
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-};
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-};
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-};
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-};
-
-const links = [
-  {
-    text: "Planner Page - Starting Point",
-    url: "/planner",
-    color: "#FF0000",
-  },
-];
-
-const IndexPage = () => {
   return (
     <Layout>
-      <main style={pageStyles}>
-        <h1 style={headingStyles}>
-          Welcome
-          <br />
-          <span style={headingAccentStyles}>
-            Let's see our project!
-          </span>
-        </h1>
-        <h3 style={paragraphStyles}>
-          Thanks to us you can check what air pollution potentially creates a new data center
-          in a given region and what costs it may incur!
-        </h3>
-        <h4 style={paragraphStyles}>
-          Hope you like it!
-        </h4>
-        <ul style={listStyles}>
-          {/* <li style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-            >
-              {docLink.text}
-            </a>
-          </li> */}
-          {links.map((link) => (
-            <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-              <span>
-                <a
-                  style={linkStyle}
-                  href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-                >
-                  {link.text}
-                </a>
-                {link.badge && (
-                  <span style={badgeStyle} aria-label="New Badge">
-                    NEW!
-                  </span>
-                )}
-                <p style={descriptionStyle}>{link.description}</p>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </main>
+      <div style={{ backgroundColor: "#f0f5f9", padding: "20px" }}>
+        <motion.div
+          className="title-container"
+          initial="initial"
+          animate="animate"
+          variants={titleVariants}
+        >
+          <h1 className="title">
+            <strong>CO2</strong> Planner for Datacenters
+          </h1>
+
+          <h3 style={{ color: "#3498db" }}>
+            Plan, manage and visualize energy consumption and CO2 emissions for
+            your datacenters.
+          </h3>
+        </motion.div>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-8">
+              <div style={sectionStyle}>
+                <h2 style={subtitleStyle}>Who are we?</h2>
+                <p style={textStyle}>
+                  We are a small team of student developers @ TU-Berlin ,
+                  Germany.
+                </p>
+                <p style={textStyle}>
+                  Our goal is to provide a tool that facilitates the planning
+                  and managing of <strong>CO2</strong> emissions of Datacenters
+                  in Europe.
+                </p>
+                <p style={textStyle}>
+                  We focus in strategic planning based on <strong>CO2</strong>{" "}
+                  emission data provided by Electricity Maps.
+                </p>
+                <p style={textStyle}>This site is a WIP.</p>
+              </div>
+            </div>
+            <div class="col-4" style={{ margin: "100px 0" }}>
+              <BestZoneCard></BestZoneCard>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div style={{ margin: "100px 0" }}>
+                <h2 style={{ textAlign: "center" }}>Our Tools:</h2>
+                <ul style={{ marginLeft: "20px" }}>
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    <Link to="/planner" style={linkStyle}>
+                      Datacenter Planner
+                    </Link>
+                  </li>
+
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    <Link to="/docs" style={linkStyle}>
+                      Documentation
+                    </Link>
+                  </li>
+                  <li style={{ fontSize: "24px", marginBottom: "30px" }}>
+                    Coming Soon...
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div></div>
+      </div>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default Home;
 
 export const Head = () => <title>CO2 Datacenter Planner</title>;
