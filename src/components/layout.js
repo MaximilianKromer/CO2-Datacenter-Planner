@@ -1,11 +1,7 @@
 import * as React from "react";
 import icon from "../images/TU-Berlin-Logo.png";
 import { Link } from "gatsby";
-/*
- * Page wrapper adding navbar & footer to all pages
- * TODO: Navbar, Footer
- * Todo: decide a name for the project
- */
+
 const NavBar = () => {
   return (
     <nav

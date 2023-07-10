@@ -87,8 +87,11 @@ const Home = () => {
                   </li>
 
                   <li style={{ fontSize: "24px", marginBottom: "30px" }}>
-                    <Link to="/docs" style={linkStyle}>
-                      Documentation
+                    <Link
+                      to="https://github.com/MaximilianKromer/CO2-Datacenter-Planner"
+                      style={linkStyle}
+                    >
+                      GitHub page
                     </Link>
                   </li>
                   <li style={{ fontSize: "24px", marginBottom: "30px" }}>
