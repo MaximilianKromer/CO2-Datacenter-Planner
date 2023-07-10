@@ -11,6 +11,8 @@ import DcSpecForm from "./dc-spec-form";
 import InputChart from "./InputChart";
 import Form from "react-bootstrap/Form";
 import datacenter_t from "./dc-specs";
+import datacenter_kwh from './kwh_input';
+import datacenter_teraflops from './teraflops_input';
 import { countries } from "../assets/countries";
 
 const BuildDataCentre = ({ onSubmit }) => {
@@ -45,13 +47,31 @@ const BuildDataCentre = ({ onSubmit }) => {
 
 
     function handleSubmit() {
-        const name = dcName || "Datacenter";
-        const locations = Array.from(document.getElementsByName('country'))
-            .filter(e => e.checked === true)
-            .map(e => e.id);
-        const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, load, locations);
-        console.log(JSON.stringify(currDatacenter));
-        onSubmit(currDatacenter);
+        if (calcWay === "Hardware components") {
+            const name = dcName || "Datacenter";
+            const locations = Array.from(document.getElementsByName('country'))
+                .filter(e => e.checked === true)
+                .map(e => e.id);
+            const currDatacenter = new datacenter_t(name, null, cpuValue, ramValue, memValue, graphValue, load, locations);
+            //console.log(JSON.stringify(currDatacenter));
+            onSubmit(currDatacenter);
+        } else if (calcWay === "kWh") {
+            const name = dcName || "Datacenter";
+            const locations = Array.from(document.getElementsByName('country'))
+                .filter(e => e.checked === true)
+                .map(e => e.id);
+            const currDatacenter = new datacenter_kwh(name, null, kwhValue, load, locations);
+            //console.log(JSON.stringify(currDatacenter));
+            onSubmit(currDatacenter);
+        } else if (calcWay === "Teraflops") {
+            const name = dcName || "Datacenter";
+            const locations = Array.from(document.getElementsByName('country'))
+                .filter(e => e.checked === true)
+                .map(e => e.id);
+            const currDatacenter = new datacenter_teraflops(name, null, teraFlopsValue, load, locations);
+            //console.log(JSON.stringify(currDatacenter));
+            onSubmit(currDatacenter);
+        }
     }
 
     function renderOptions() {
@@ -59,7 +79,6 @@ const BuildDataCentre = ({ onSubmit }) => {
             return (
                 <DcSpecForm cpuValue={cpuValue} setCpuValue={setCpuValue} ramValue={ramValue} setRamValue={setRamValue}
                     memValue={memValue} setMemValue={setMemValue} graphValue={graphValue} setGraphValue={setGraphValue}></DcSpecForm>
-
             );
         } else if (calcWay === "kWh") {
             return (
@@ -81,7 +100,6 @@ const BuildDataCentre = ({ onSubmit }) => {
                     type='number'
                     min={0.0}
                     onChange={e => setTeraFlopsValue(e.target.value)}>
-
                 </FormControl >
             );
         } else {
