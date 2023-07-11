@@ -24,7 +24,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/home">
+              <Link className="nav-link" aria-current="page" to="/">
                 Home
               </Link>
             </li>
@@ -52,7 +52,7 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        backgroundColor: "#3282F6",
+        backgroundColor: "#3EB6E6",
         left: 0,
         right: 0,
         height: 60,

@@ -47,7 +47,7 @@ const ResultList = ({ datacenter }) => {
 
   return (
     <Container>
-      <h1>Your desired destinations to build <small className="text-primary h1">{datacenter.name}</small>:</h1>
+      <h1>Your desired destinations to build <small className="h1" style={{ color: "#2EA6D6" }}>{datacenter.name}</small>:</h1>
       <br></br>
       <Form id="results">
         <div class="row mb-3">
