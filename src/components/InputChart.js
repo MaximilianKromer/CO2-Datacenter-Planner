@@ -54,7 +54,7 @@ const InputChart = ({ title, subtitle, data, onChange }) => {
         name: 'Auslastung',
         cursor: 'ns-resize',
         lineWidth: 3,
-        color: '#1E90FF',
+        color: '#3EB6E6',
       }
     ],
     plotOptions: {

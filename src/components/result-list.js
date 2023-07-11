@@ -47,13 +47,26 @@ const ResultList = ({ datacenter }) => {
 
   return (
     <Container>
-      <h1>Your desired destinations to build Data Centre</h1>
+      <h1>Your desired destinations to build <small className="h1" style={{ color: "#2EA6D6" }}>{datacenter.name}</small>:</h1>
       <br></br>
       <Form id="results">
-        <ul class="list-group  list-group-numbered">
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">Sort by:</label>
+          <div class="col-sm-10">
+            <select class="form-select" aria-label="Sort by">
+              <option selected>Total CO2</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="list-group  list-group-numbered ">
           
           {
-            loading ? <p>Loading...</p> :
+            loading ? 
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            :
             Object.entries(totalCO2s)
               .sort((a, b) => a[1] - b[1])
               .map((element) => {

@@ -13,7 +13,7 @@ const ResultItem = ({ countryCode, co2, co2Array, cost }) => {
           <Label for={c.code}>Country: {c.name}</Label>
         ))}
       <br />
-      <Label>Carbon Intensity: {co2}g of CO2 per kWh</Label>
+      <Label>Carbon Intensity: {co2}g of CO2 per day</Label>
       <br />
       {countries
         .filter((c) => c.code === countryCode)
