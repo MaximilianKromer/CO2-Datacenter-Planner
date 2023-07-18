@@ -47,3 +47,20 @@ The `InputChart` component utilizes [Highcharts](https://api.highcharts.com/high
 ### `array-to-co2.js`
 
 The `calculateCO2History` function is a utility that makes an API call to the backend to calculate the CO2 generated for each hour based on KW/H values. It retrieves CO2 data for a specified zone and performs calculations related to CO2 emissions.
+
+## How to run
+
+To run a development Version locally just simply run the following commands, with a node installation >= 18.
+
+```
+npm install
+npm run develop
+```
+
+To build a static website run:
+
+```
+npm run build
+```
+
+Then configure your webserver of choice to serve the files in the public/ directory.
